@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_142511) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_31_035440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_142511) do
     t.index ["slug", "sluggable_type", "scope", "locale"], name: "index_friendly_id_slugs_unique", unique: true
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "my_file1s", force: :cascade do |t|
+    t.string "file_name"
+    t.string "file_path"
+    t.string "file_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "my_files", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string "code"
+    t.text "description"
+    t.decimal "discount"
+    t.datetime "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "solid_cache_entries", force: :cascade do |t|

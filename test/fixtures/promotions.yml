@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  description: MyText
+  discount: 9.99
+  expiration_date: 2024-05-27 10:33:36
+
+two:
+  code: MyString
+  description: MyText
+  discount: 9.99
+  expiration_date: 2024-05-27 10:33:36

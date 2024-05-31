@@ -1,23 +1,26 @@
+# config/routes.rb
+
 Rails.application.routes.draw do
-  # This line mounts Spree's routes at the root of your application.
-  # This means, any requests to URLs such as /products, will go to
-  # Spree::ProductsController.
-  # If you would like to change where this engine is mounted, simply change the
-  # :at option to something different.
-  #
-  # We ask that you don't use the :as option here, as Spree relies on it being
-  # the default of "spree".
+  get 'pages/index1'
+  get "a"=>"admin#promotions"
+  post "a" => "admin#promotions"
+  get "index1"=>"pages#index1"
+  post "index1" =>"pages#index1"
+  namespace :admin do
+    get 'promo_codes/import', to: 'promo_codes#import_form', as: :import_promo_codes_form
+    post 'promo_codes/import', to: 'promo_codes#import', as: :import_promo_codes
+  end
   mount Spree::Core::Engine, at: '/'
 
-  # https://github.com/basecamp/mission_control-jobs?tab=readme-ov-file#basic-configuration
+  Spree::Core::Engine.routes.draw do
+    namespace :admin do
+      resources :custom_products, only: [:index, :show]
+    end
+  end
+    
+  
+  
   mount MissionControl::Jobs::Engine, at: "/jobs"
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

@@ -1,0 +1,13 @@
+<!-- app/views/admin/promo_codes/import_form.html.erb -->
+
+<h1>Import Promo Codes</h1>
+
+<%= form_with url: import_promo_codes_path, local: true, html: { multipart: true } do |form| %>
+  <div class="field">
+    <%= form.label :file, "Upload CSV file" %><br>
+    <%= form.file_field :file %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Import" %>
+  </div>
+<% end %>
