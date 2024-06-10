@@ -40,4 +40,7 @@ class PagesController < ApplicationController
       redirect_to "/admin/promotions/promo"
     end
   end
+  def question_n_answer
+    @questions = MyQuestion.all
+  end
 end

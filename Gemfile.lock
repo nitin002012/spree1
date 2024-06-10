@@ -143,6 +143,13 @@ GEM
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    cable_ready (5.0.5)
+      actionpack (>= 5.2)
+      actionview (>= 5.2)
+      activesupport (>= 5.2)
+      observer (~> 0.1)
+      railties (>= 5.2)
+      thread-local (>= 1.1.0)
     cancancan (3.6.0)
     canonical-rails (0.2.15)
       actionview (>= 4.1, <= 7.2)
@@ -160,10 +167,18 @@ GEM
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
+    cssbundling-rails (1.4.0)
+      railties (>= 6.0.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -223,6 +238,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (7.0.0)
       railties (>= 3.2.16)
+    jsbundling-rails (1.3.0)
+      railties (>= 6.0.0)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
     kaminari (1.2.2)
@@ -282,10 +299,14 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
+    nokogiri-html5-inference (0.3.0)
+      nokogiri (~> 1.14)
+    observer (0.1.2)
     orm_adapter (0.5.0)
     paranoia (2.6.3)
       activerecord (>= 5.1, < 7.2)
     pg (1.1.4)
+    polyglot (0.3.5)
     popper_js (1.16.1)
     psych (5.1.2)
       stringio
@@ -295,6 +316,8 @@ GEM
     raabro (1.4.0)
     racc (1.8.0)
     rack (3.0.11)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -334,6 +357,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
+    rainbow (3.1.1)
     rake (13.2.1)
     ransack (4.1.1)
       activerecord (>= 6.1.5)
@@ -488,10 +512,22 @@ GEM
       state_machines-activemodel (>= 0.9.0)
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
+    stimulus_reflex (3.5.2)
+      actioncable (>= 5.2, < 8)
+      actionpack (>= 5.2, < 8)
+      actionview (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
+      cable_ready (~> 5.0)
+      nokogiri (~> 1.0)
+      nokogiri-html5-inference (~> 0.3)
+      rack (>= 2, < 4)
+      railties (>= 5.2, < 8)
+      redis (>= 4.0, < 6.0)
     stringex (2.8.6)
     stringio (3.1.0)
     strscan (3.1.0)
     thor (1.3.1)
+    thread-local (1.1.0)
     tilt (2.3.0)
     timeout (0.4.1)
     tinymce-rails (5.10.9)
@@ -526,13 +562,17 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  cssbundling-rails
   debug
+  deface
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  jsbundling-rails
   mission_control-jobs
   pg (~> 1.1.0)
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.3)
   redis (>= 4.0.1)
   sassc!
@@ -549,6 +589,7 @@ DEPENDENCIES
   spree_sample
   sprockets-rails
   stimulus-rails
+  stimulus_reflex
   turbo-rails
   tzinfo-data
   web-console

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_01_105009) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_10_070841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_105009) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "promocode1s", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "description"
+    t.string "expiration"
+    t.string "usage"
+    t.string "users1"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "promocodes", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -104,6 +115,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_105009) do
     t.text "description"
     t.decimal "discount"
     t.datetime "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questionnaire1s", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.json "schema"
+    t.json "options"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.json "schema"
+    t.json "options"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -1752,6 +1781,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_105009) do
     t.index ["kind"], name: "index_spree_zones_on_kind"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration_in_month"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.json "questions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_surveys_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -1772,4 +1824,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_105009) do
   add_foreign_key "spree_store_translations", "spree_stores"
   add_foreign_key "spree_taxon_translations", "spree_taxons"
   add_foreign_key "spree_taxonomy_translations", "spree_taxonomies"
+  add_foreign_key "surveys", "users"
 end

@@ -1,0 +1,28 @@
+
+<body class="bg-gray-100 text-gray-800">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Create New Question</h1>
+    <%= form_with model: @ques, local: true, class: "bg-white p-6 rounded-md shadow-md space-y-4" do |form| %>
+      <div>
+        <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :title, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm",required: true %>
+      </div>
+      <div>
+        <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_area :description, rows: 4, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm", required: true %>
+      </div>
+      <div>
+        <%= form.label :schema, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :schema, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm", required: true %>
+      </div>
+      <div>
+        <%= form.label :options, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_area :options, rows: 4, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm", required: true %>
+      </div>
+      <div>
+        <%= form.submit 'Submit', class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+        <%= link_to "Back to Questions", '/api/index1' %>
+      </div>
+    <% end %>
+  </div>
+</body>

@@ -10,3 +10,16 @@
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+MyQuestion.create(
+  question: "this is a demo question 1",
+  answer: "this is a demo answer 1"
+)
+
+user = User.create(name: "John Doe", email: "john.doe@example.com")
+survey = user.surveys.create(questions: [])
+
+
+survey = Survey.create(questions: [])
+survey.add_question({ text: "What is your favorite color?", type: "multiple_choice", options: ["Red", "Blue", "Green"] })
+survey.save

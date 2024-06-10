@@ -2,3 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@rails/request.js"
+import "config"
+import "channels"
+import Rails from 'rails-ujs'
+Rails.start()
