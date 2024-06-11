@@ -2,7 +2,7 @@ class QuestionController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @questions = Question.all
+    @questions = Questionanswer.all
     render json: @questions.as_json, status: :ok
   end
 
@@ -26,9 +26,10 @@ class QuestionController < ApplicationController
   def create1
     @question =Question.new()
     if @question.save
-      redirect_to question_path
+      redirect_to questions_path
     else
       render :new
+
     end
   end
 

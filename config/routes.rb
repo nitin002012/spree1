@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+
   resources :question
   get 'question/index'
   get 'question/show'
   get 'question/create'
-  post 'questions/create'
+  post 'questions'=> 'question#new'
   get 'question/destroy'
   delete 'question/destroy'
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :questions
 
+  resources :questionanswers
 
 
 
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   post "a" => "admin#promotions"
   get "index1"=>"pages#index1"
   post "index1" =>"pages#index1"
+
 
 
   mount Spree::Core::Engine, at: '/'
